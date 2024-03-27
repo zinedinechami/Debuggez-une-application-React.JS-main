@@ -7,7 +7,7 @@ import ModalEvent from "../ModalEvent";
 
 import "./style.css";
 
-// TODO: Explain this component and fix the issues
+// TODO: event section = card not appearing issue
 // explain useData
 
 const PER_PAGE = 9;

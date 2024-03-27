@@ -4,8 +4,9 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-// TODO: explain code and fix confimation message
+// TODO: form = fix confimation message
 
+// explain mockContactApi function
 const mockContactApi = () =>
   new Promise((resolve) => {
     setTimeout(resolve, 1000);
@@ -13,11 +14,12 @@ const mockContactApi = () =>
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
+  // explain useCallback method
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
       setSending(true);
-      // We try to call mockContactApi
+      // We try to call mockContactApi?
       try {
         await mockContactApi();
         setSending(false);
@@ -29,9 +31,11 @@ const Form = ({ onSuccess, onError }) => {
     [onSuccess, onError]
   );
   return (
+    // explain onSubmit
     <form onSubmit={sendContact}>
       <div className="row">
         <div className="col">
+          {/* look into the componenets individually */}
           <Field placeholder="" label="Nom" />
           <Field placeholder="" label="Prénom" />
           <Select
