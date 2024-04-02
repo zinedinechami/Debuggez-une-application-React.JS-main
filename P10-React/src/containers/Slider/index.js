@@ -5,20 +5,32 @@ import { getMonth } from "../../helpers/Date";
 import "./style.scss";
 
 // TODO: slider
+// ! problemes du slider: compteur ne marche pas, une image vide dans le slider
 
 const Slider = () => {
-  // explain data custom hook
+  // le useData crée un contexte partageé a travers les components, le data dans ce cas sont les events
   const { data } = useData();
+  // state de l'index
   const [index, setIndex] = useState(0);
-  // what is focus and sort method, what is evtA etvB
+  // function sorts data, by date
+  // sort method for arrays, in decsending order
+  // if data A is inferior to data B, do -1 else do 1
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    // what is the "new", explain tenanary function here
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
+
+  // const theLength = byDateDesc.length;
+  // console.log(theLength);
   // ! propreties of length cannot be read
+  // Change card function, using set timeout (wiht miliseconds at the end), executes code every 5 secs
   const nextCard = () => {
-    setTimeout(() => setIndex(index < byDateDesc.length ? index + 1 : 0), 5000);
+    // state index function, if index inferior to date data variable, do index + 1, else 0
+    setTimeout(
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
+      3000
+    );
   };
+  // ? why is there a useEffect for each nextCard
   useEffect(() => {
     nextCard();
   });
@@ -31,6 +43,7 @@ const Slider = () => {
         <>
           <div
             key={event.title}
+            // idx is index
             // what is $ doing here?
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
