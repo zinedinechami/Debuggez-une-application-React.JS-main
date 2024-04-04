@@ -7,34 +7,58 @@ import ModalEvent from "../ModalEvent";
 
 import "./style.css";
 
-// TODO: event section = card not appearing issue
-// explain useData
+// TODO: event section = card not appearing issue, problem could be select values, change Type
 
 const PER_PAGE = 9;
 
-const EventList = () => {
+function EventList() {
+  // FETCH DATA PROP
+  // usecontext data hook, with error handling if event is not found
   const { data, error } = useData();
+  // TYPE OF EVENT
+  // state for the type of event
   const [type, setType] = useState();
+  // MAKE PAGE APPEAR
+  // state for the current page that appears
   const [currentPage, setCurrentPage] = useState(1);
+
+  // RETURNS ARRAY THAT FILTERS DATA
+  // if type, show event, else events, or array,
+  // filter returns an array that meets conditions
   const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
     (event, index) => {
       if (
+        // if currentPage - 1, multiplied by per_page (9) inferior or equal to index,
+        // render per page(9) multiplied by currentpage superior to index
         (currentPage - 1) * PER_PAGE <= index &&
         PER_PAGE * currentPage > index
       ) {
+        // if condition is met, return true, else false
         return true;
       }
       return false;
     }
   );
+
+  // UPDATE STATE AND TYPE OF CURRENT PAGE OPENED
+  // fonction mettant a jour le state de set current page
+  // et le state du type
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
+
+  // arrondis au nombre le plus pres la longeur de filterd events divisé par 9, + 1
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
+
+  // list of types for slide down
   const typeList = new Set(data?.events.map((event) => event.type));
+
+  // TODO: i need to find the mechanism that allows the events presented to
+
   return (
     <>
+      {/* jsx error handling if data not fetched */}
       {error && <div>An error occured</div>}
       {data === null ? (
         "loading"
@@ -46,6 +70,7 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
+            {/* Fetch events */}
             {filteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
@@ -53,7 +78,7 @@ const EventList = () => {
                     onClick={() => setIsOpened(true)}
                     imageSrc={event.cover}
                     title={event.title}
-                    date={new Date(event.date)}
+                    date={new Date(event.data)}
                     label={event.type}
                   />
                 )}
@@ -72,6 +97,6 @@ const EventList = () => {
       )}
     </>
   );
-};
+}
 
 export default EventList;

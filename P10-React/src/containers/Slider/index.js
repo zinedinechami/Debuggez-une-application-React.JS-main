@@ -4,8 +4,7 @@ import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
 
-// TODO: slider
-// ! problemes du slider: compteur ne marche pas, une image vide dans le slider
+// TODO: slider: key and length console bug
 
 const Slider = () => {
   // le useData crée un contexte partageé a travers les components, le data dans ce cas sont les events
@@ -65,7 +64,6 @@ const Slider = () => {
               {/* key should be changed, what does it access here? */}
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
                   type="radio"
                   name="radio-button"
                   // what is checked?

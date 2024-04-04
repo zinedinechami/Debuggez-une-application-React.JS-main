@@ -4,17 +4,21 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-// TODO: form = fix confimation message
+// TODO: form = add confimation message
 
-// explain mockContactApi function
+// fonction qui stimule un reponse contact API, appelant une promese, toutes  les 1 sec
+// une fonction call back est une fonction passé en argument dans une autre fonction, donc une fonction qu'on peut faire passer en tant que valeur
 const mockContactApi = () =>
   new Promise((resolve) => {
-    setTimeout(resolve, 1000);
+    setTimeout(resolve, 3000);
   });
 
-const Form = ({ onSuccess, onError }) => {
+function Form({ onSuccess, onError }) {
   const [sending, setSending] = useState(false);
-  // explain useCallback method
+  // le useCallback permet de ne pas re render le code present à certaines conditions
+  // re render le component que lorsque la dépendence change
+  // functions activates after the sending of the form
+  // changes the state of sending, thus sending a message to the user
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
@@ -30,8 +34,10 @@ const Form = ({ onSuccess, onError }) => {
     },
     [onSuccess, onError]
   );
+
+  // console.log(sending);
+
   return (
-    // explain onSubmit
     <form onSubmit={sendContact}>
       <div className="row">
         <div className="col">
@@ -47,7 +53,8 @@ const Form = ({ onSuccess, onError }) => {
           />
           <Field placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
-            {sending ? "En cours" : "Envoyer"}
+            {/* sending message needs to change on submit button, il n'y pas de message de confirmation */}
+            {sending ? "Message envoyé" : "Envoyer"}
           </Button>
         </div>
         <div className="col">
@@ -60,7 +67,7 @@ const Form = ({ onSuccess, onError }) => {
       </div>
     </form>
   );
-};
+}
 
 Form.propTypes = {
   onError: PropTypes.func,
