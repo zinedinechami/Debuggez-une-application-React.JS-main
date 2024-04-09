@@ -3,7 +3,9 @@ import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
 
-// TODO: console = Event card, imageSrc is undefined but requireced
+// ! console = Event card, imageSrc is undefined but requireced
+
+// TODO: regarder ou le composants et le prop imageSrc est passé, voir si un string ou le bon type y est associé, ou just retirer le prop du composant
 
 const EventCard = ({
   imageSrc,

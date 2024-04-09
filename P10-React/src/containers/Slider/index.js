@@ -64,6 +64,7 @@ const Slider = () => {
               {/* key should be changed, what does it access here? */}
               {byDateDesc.map((_, radioIdx) => (
                 <input
+                  // mettre une clé
                   type="radio"
                   name="radio-button"
                   // what is checked?

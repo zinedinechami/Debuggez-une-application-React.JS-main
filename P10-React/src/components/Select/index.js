@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
+// TODO: explain component, to add event listener to each select and add a key
+
 const Select = ({
   selection,
   onChange,
@@ -88,7 +90,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
   onChange: () => null,
@@ -96,6 +98,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;

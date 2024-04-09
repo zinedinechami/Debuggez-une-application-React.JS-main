@@ -12,6 +12,8 @@ import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
+// TODO: Footer event card
+
 const Page = () => {
   const { last } = useData();
   return (

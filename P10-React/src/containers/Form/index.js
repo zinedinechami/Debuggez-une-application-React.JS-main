@@ -4,8 +4,6 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-// TODO: form = add confimation message
-
 // fonction qui stimule un reponse contact API, appelant une promese, toutes  les 1 sec
 // une fonction call back est une fonction passé en argument dans une autre fonction, donc une fonction qu'on peut faire passer en tant que valeur
 const mockContactApi = () =>
@@ -53,7 +51,7 @@ function Form({ onSuccess, onError }) {
           />
           <Field placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
-            {/* sending message needs to change on submit button, il n'y pas de message de confirmation */}
+            {/* Changed sedding message */}
             {sending ? "Message envoyé" : "Envoyer"}
           </Button>
         </div>

@@ -7,7 +7,7 @@ import ModalEvent from "../ModalEvent";
 
 import "./style.css";
 
-// TODO: event section = card not appearing issue, problem could be select values, change Type
+// ! event section = card not appearing issue, problem could be select values, change Type
 
 const PER_PAGE = 9;
 
@@ -18,7 +18,7 @@ function EventList() {
   // TYPE OF EVENT
   // state for the type of event
   const [type, setType] = useState();
-  // MAKE PAGE APPEAR
+  // MAKE PAGE APPEAR?
   // state for the current page that appears
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -54,17 +54,19 @@ function EventList() {
   // list of types for slide down
   const typeList = new Set(data?.events.map((event) => event.type));
 
-  // TODO: i need to find the mechanism that allows the events presented to
+  // TODO: create function that makes event section function, se baser sur filter, find et P6
+  // ideas: add event listener to select selections, add a key or id to each selection option
+  // as an event, create a function that makes only events linked to select displayable
 
   return (
     <>
-      {/* jsx error handling if data not fetched */}
       {error && <div>An error occured</div>}
       {data === null ? (
         "loading"
       ) : (
         <>
           <h3 className="SelectTitle">Catégories</h3>
+          {/* explain what is done inside the props */}
           <Select
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
