@@ -33,6 +33,7 @@ const Slider = () => {
   useEffect(() => {
     nextCard();
   });
+
   return (
     <div className="SlideCardList">
       {/*!  2 children with the same key */}

@@ -25,6 +25,8 @@ function Form({ onSuccess, onError }) {
       try {
         await mockContactApi();
         setSending(false);
+        // added onsuccess
+        onSuccess();
       } catch (err) {
         setSending(false);
         onError(err);
@@ -52,7 +54,7 @@ function Form({ onSuccess, onError }) {
           <Field placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
             {/* Changed sedding message */}
-            {sending ? "Message envoyé" : "Envoyer"}
+            {sending ? "En Cours" : "Envoyer"}
           </Button>
         </div>
         <div className="col">
