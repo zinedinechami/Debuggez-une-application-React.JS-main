@@ -15,7 +15,10 @@ import { useData } from "../../contexts/DataContext";
 // TODO: Footer event card
 
 const Page = () => {
-  const { last } = useData();
+  const { data } = useData();
+
+  const last = data?.events.pop(-1);
+  console.log(last);
   return (
     <>
       <header>
@@ -117,13 +120,15 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {/* TODO: console = Prop undefined but required, for imageSrc and Title */}
-          <EventCard
-            imageSrc={last?.cover}
-            title={last?.title}
-            date={new Date(last?.date)}
-            small
-            label="boom"
-          />
+          {last && (
+            <EventCard
+              imageSrc={last?.cover}
+              title={last?.title}
+              date={new Date(last?.date)}
+              small
+              label="boom"
+            />
+          )}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
