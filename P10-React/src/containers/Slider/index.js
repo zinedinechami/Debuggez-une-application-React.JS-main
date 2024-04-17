@@ -34,9 +34,8 @@ const Slider = () => {
       {/*!  unique key, each child in list should have a unique key prop */}
       {/* what is byDateDesc? */}
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={event.id}>
           <div
-            key={event.id}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -53,8 +52,6 @@ const Slider = () => {
           </div>
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
-              {/* why is there an underscore and what is radioIdx */}
-              {/* key should be changed, what does it access here? */}
               {byDateDesc.map((_, radioIdx) => (
                 <input
                   key={_.id}
@@ -67,7 +64,7 @@ const Slider = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
