@@ -12,13 +12,11 @@ import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
-// TODO: Footer event card
-
 const Page = () => {
   const { data } = useData();
 
   const last = data?.events.pop(-1);
-  console.log(last);
+
   return (
     <>
       <header>
@@ -119,7 +117,6 @@ const Page = () => {
       <footer className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
-          {/* TODO: console = Prop undefined but required, for imageSrc and Title */}
           {last && (
             <EventCard
               imageSrc={last?.cover}

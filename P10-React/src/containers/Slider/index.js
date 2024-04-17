@@ -22,6 +22,8 @@ const Slider = () => {
   // console.log(theLength);
   // ! propreties of length cannot be read
   // Change card function, using set timeout (wiht miliseconds at the end), executes code every 5 secs
+
+  // const DateLength = byDateDesc.length;
   const nextCard = () => {
     // state index function, if index inferior to date data variable, do index + 1, else 0
     setTimeout(
@@ -43,8 +45,6 @@ const Slider = () => {
         <>
           <div
             key={event.id}
-            // idx is index
-            // what is $ doing here?
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -64,12 +64,15 @@ const Slider = () => {
               {/* why is there an underscore and what is radioIdx */}
               {/* key should be changed, what does it access here? */}
               {byDateDesc.map((_, radioIdx) => (
-                <input
-                  type="radio"
-                  name="radio-button"
-                  // what is checked?
-                  checked={index === radioIdx}
-                />
+                <span>
+                  <input
+                    type="radio"
+                    name="radio-button"
+                    // what is checked?
+                    onChange={nextCard}
+                    checked={index === radioIdx}
+                  />
+                </span>
               ))}
             </div>
           </div>

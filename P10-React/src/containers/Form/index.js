@@ -8,7 +8,7 @@ import Button, { BUTTON_TYPES } from "../../components/Button";
 // une fonction call back est une fonction passé en argument dans une autre fonction, donc une fonction qu'on peut faire passer en tant que valeur
 const mockContactApi = () =>
   new Promise((resolve) => {
-    setTimeout(resolve, 3000);
+    setTimeout(resolve, 900);
   });
 
 function Form({ onSuccess, onError }) {
@@ -54,7 +54,7 @@ function Form({ onSuccess, onError }) {
           <Field placeholder="" label="Email" />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
             {/* Changed sedding message */}
-            {sending ? "En Cours" : "Envoyer"}
+            {sending ? "En cours" : "Envoyer"}
           </Button>
         </div>
         <div className="col">

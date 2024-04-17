@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-// TODO: explain component, to add event listener to each select and add a key
-
 const Select = ({
   selection,
   onChange,
