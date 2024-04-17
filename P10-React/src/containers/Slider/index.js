@@ -18,18 +18,10 @@ const Slider = () => {
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
 
-  // const theLength = byDateDesc.length;
-  // console.log(theLength);
-  // ! propreties of length cannot be read
   // Change card function, using set timeout (wiht miliseconds at the end), executes code every 5 secs
-
-  // const DateLength = byDateDesc.length;
   const nextCard = () => {
     // state index function, if index inferior to date data variable, do index + 1, else 0
-    setTimeout(
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
-      3000
-    );
+    setTimeout(() => setIndex(index < 3 - 1 ? index + 1 : 0), 3000);
   };
   // ? why is there a useEffect for each nextCard
   useEffect(() => {
@@ -64,15 +56,14 @@ const Slider = () => {
               {/* why is there an underscore and what is radioIdx */}
               {/* key should be changed, what does it access here? */}
               {byDateDesc.map((_, radioIdx) => (
-                <span>
-                  <input
-                    type="radio"
-                    name="radio-button"
-                    // what is checked?
-                    onChange={nextCard}
-                    checked={index === radioIdx}
-                  />
-                </span>
+                <input
+                  key={_.id}
+                  type="radio"
+                  name="radio-button"
+                  // what is checked?
+                  onChange={nextCard}
+                  checked={index === radioIdx}
+                />
               ))}
             </div>
           </div>
